@@ -26,6 +26,13 @@ namespace VideoFuckUp
             
             byte[] videoFile = File.ReadAllBytes(videoPath);
             string[] vs = videoPath.Split(new char[] { '.' });
+
+            if(vs.Length < 2)
+            {
+                Console.WriteLine("Unsupported file.");
+                Environment.Exit(1);
+            }
+
             string fileExtension = vs[1];
             if(fileExtension.Equals("mp4"))
             {
@@ -35,7 +42,11 @@ namespace VideoFuckUp
             {
                 webmHandler(videoFile, durationArray, videoPath);
             }
-            
+            else
+            {
+                Console.WriteLine("Unsupported file.");
+                Environment.Exit(1);
+            }
             //6D 76 68 64
         }
 
